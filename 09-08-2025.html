@@ -1,0 +1,765 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part Packaging Portal</title>
+    <style>
+       body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    color: #333;
+    background: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e0eafc, #f9f9f9);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== LOGIN / RESET PAGE ===== */
+#loginPage, #resetPage {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-image: url('image.png');
+    background-size: cover;
+    background-position: center;
+    animation: bgMove 30s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginPage::after, #resetPage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#loginForm, #resetForm {
+    position: relative;
+    z-index: 10;
+    width: 320px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+#loginForm h2, #resetForm h2 {
+    color: #2b6cb0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+#loginForm input, #resetForm input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#loginForm input:focus, #resetForm input:focus {
+    border-color: #2b6cb0;
+    box-shadow: 0 0 8px rgba(43,108,176,0.4);
+}
+
+#loginForm button, #resetForm button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 15px;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#loginForm button:hover, #resetForm button:hover {
+    background-color: #1a4f85;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+#loginForm button::before, #resetForm button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: skewX(-20deg);
+}
+#loginForm button:hover::before, #resetForm button:hover::before {
+    animation: shine 0.75s forwards;
+}
+
+@keyframes shine {
+    100% { left: 125%; }
+}
+
+#loginForm p, #resetForm p {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+#loginForm p:hover, #resetForm p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #1a4f85;
+}
+
+
+        header {
+        background-color: rgba(43, 108, 176, 0.85);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+ .nav-button {
+      background-color: #4a5568;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .nav-button:hover {
+      background-color: #2d3748;
+    }
+
+    h1 {
+      margin-top: 30px;
+      color: #2b6cb0;
+    }
+
+    .content {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .search-section {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+    }button:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+    input[type="text"] {
+        width: 400px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 2px solid #2b6cb0;
+    }
+    
+    button {
+  position: relative;
+  overflow: hidden;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+}
+button:hover::before {
+  animation: shine 0.75s forwards;
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+body {
+  background: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e0eafc, #f9f9f9);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        padding: 20px;
+        gap: 20px;
+    }
+    .info-section {
+        flex: 1;
+        min-width: 250px;
+        max-width: 35%;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .#imageSection { display: none; flex: 1; gap: 10px; flex-direction: row; flex-wrap: wrap; }
+.main-image { flex: 2; min-width: 250px; background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.side-images { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; min-width: 150px; }
+.main-image img, .side-images img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); cursor: pointer; }
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #edf2f7;
+    }
+
+    /* Image Modal */
+.modal {
+    display: none;  /* Keep modal hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background-color: black;
+}
+
+.modal:hover {
+    cursor: pointer;
+}
+        /* Popup Modal Styling */
+        #pdfModal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+        #pdfModalContent {
+            margin: 5% auto;
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            position: relative;
+        }
+        #pdfModalContent iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #closePdfModal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            cursor: pointer;
+        }
+        /* === Animations === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes zoomFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+.animate-zoomFade {
+  animation: zoomFade 0.5s ease-out forwards;
+}
+
+
+    </style>
+</head>
+<body onload="initializeApp()">
+
+   <div id="loginPage">
+    <div id="loginForm">
+      <h2 style="color: #2b6cb0;">Login</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="checkLogin()">Login</button>
+      <p id="loginError" style="color: red; display: none;">Invalid Credentials</p>
+      <p style="margin-top:10px; cursor:pointer; color:blue; text-decoration:underline;"
+         onclick="showResetForm()">Forgot Password?</p>
+    </div>
+  </div>
+  
+  <!-- RESET PASSWORD PAGE -->
+  <div id="resetPage" style="display:none;">
+    <div id="resetForm">
+      <h2 style="color: #2b6cb0;">Reset Password</h2>
+      <input type="email" id="resetEmail" placeholder="Enter your email" />
+      <button onclick="sendReset()">Send Reset Link</button>
+      <p id="resetMessage" style="color:green; display:none;">Password reset link sent!</p>
+      <p style="margin-top:10px; cursor:pointer; color:blue; text-decoration:underline;"
+         onclick="showLoginForm()">Back to Login</p>
+    </div>
+  </div>
+
+<div id="portalPage" style="display: none;">
+
+<header style="
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background: #2c3e50; 
+  color: white; 
+  padding: 12px 20px; 
+  font-size: 18px; 
+  font-weight: 600; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+">
+  <div>Part Packaging Portal</div>
+  <button class="nav-button" id="addPartBtn">➕ Add Part</button>
+  <button class="nav-button" style="
+    background: none; 
+    border: none; 
+    color: white; 
+    font-size: 20px; 
+    cursor: pointer;
+  ">☰</button>
+</header><div class="search-section">
+    
+    <input type="text" id="partInput" placeholder="Enter part number..." autocomplete="off" oninput="handleInput()" />
+
+  <button onclick="searchPart()">Search</button>
+  <div id="suggestions" style="border: 1px solid #ccc; background: #fff; max-height: 200px; overflow-y: auto; display: none; position: absolute; z-index: 999; width: 300px;"></div>
+
+
+</div>
+
+<div class="content">
+    <div class="info-section" id="infoSection" style="display: none;">
+    <!-- Part details will appear here -->
+</div>
+
+
+    <div id="imageSection" style="display: none; flex: 1; gap: 10px;">
+        <div class="main-image" id="mainImageSection">
+            <img src="default-main.jpg" alt="Main Image" onclick="enlargeImage(this.src)">
+        </div>
+        <div class="side-images" id="sideImagesSection">
+            <img src="default-side.jpg" alt="Side Image 1" onclick="enlargeImage(this.src)">
+            <img src="default-side.jpg" alt="Side Image 2" onclick="enlargeImage(this.src)">
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <img class="modal-content" id="modalImage">
+</div>
+<div id="infoSection" style="padding:20px;"></div>
+
+
+<!-- PDF Modal -->
+<div id="pdfModal">
+    <div id="pdfModalContent">
+        <span id="closePdfModal">&times;</span>
+        <iframe id="pdfViewer"></iframe>
+    </div>
+</div>
+
+<!-- Add Part Modal -->
+<div id="addPartModal" style="
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.5); z-index:10000; justify-content:center; align-items:center;
+">
+  <div style="background:white; padding:20px; border-radius:10px; width:400px;">
+    <h3>Add New Part</h3>
+    <input type="text" id="newPartNumber" placeholder="Part Number" style="width:100%;margin-bottom:8px;">
+    <input type="text" id="newPartDesc" placeholder="Description" style="width:100%;margin-bottom:8px;">
+    <input type="text" id="newPartVendor" placeholder="Vendor" style="width:100%;margin-bottom:8px;">
+    <input type="number" id="newPartSnp" placeholder="SNP" style="width:100%;margin-bottom:8px;">
+    <input type="text" id="newPartStp" placeholder="STP" style="width:100%;margin-bottom:8px;">
+    <div style="margin-top:10px;text-align:right;">
+      <button onclick="saveNewPart()" style="padding:8px 14px;background:#2b6cb0;color:white;border:none;border-radius:6px;">Save</button>
+      <button onclick="closeAddPart()" style="padding:8px 14px;background:gray;color:white;border:none;border-radius:6px;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    /* Dummy Credentials */
+const validUsername = "admin";
+const validPassword = "0000";
+
+/* Login Check Function */
+function checkLogin() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (username === validUsername && password === validPassword) {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('portalPage').style.display = 'block';
+
+        // Optional: add animation or fade-in
+        document.getElementById('portalPage').classList.add('animate-fadeInUp');
+    } else {
+        document.getElementById('loginError').style.display = 'block';
+    }
+}
+let partData = [];
+
+// Load part data from JSON when page starts
+function initializeApp() {
+  fetch("contData.json")
+    .then(response => response.json())
+    .then(data => {
+      partData = data;
+      console.log("Part data loaded:", partData);
+    })
+    .catch(err => {
+      console.error("Error loading part data:", err);
+    });
+}
+
+
+let debounceTimer;
+
+function handleInput() {clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(handleInput, 300);
+    const input = document.getElementById('partInput').value.trim();
+    const suggestionBox = document.getElementById('suggestions');
+
+    if (!input) {
+        suggestionBox.style.display = 'none';
+        currentMatch = null;
+        return;
+    }
+
+    const regex = input.includes('%')
+        ? new RegExp('^' + input.replace(/%/g, '.*') + '$', 'i')
+        : new RegExp(input, 'i');
+
+    const matches = partData.filter(p => regex.test(p.Part));
+    currentMatch = matches.length > 0 ? matches[0].Part : null;
+
+    if (matches.length === 0) {
+        suggestionBox.innerHTML = "<div style='padding: 5px;'>No matches found</div>";
+        suggestionBox.style.display = 'block';
+        return;
+    }
+
+    suggestionBox.innerHTML = matches.map(m => {
+        const highlightRegex = new RegExp(input.replace(/%/g, '.*'), 'i');
+        const highlighted = m.Part.replace(highlightRegex, match => `<strong style="color: green;">${match}</strong>`);
+        return `<div style="padding: 5px; cursor: pointer;" onclick="selectPart('${m.Part}')">${highlighted}</div>`;
+    }).join('');
+    suggestionBox.style.display = 'block';
+}
+
+function selectPart(fullPartNumber) {
+    document.getElementById('partInput').value = fullPartNumber;
+    document.getElementById('suggestions').style.display = 'none';
+
+    loadPartDetails(fullPartNumber);   // Fill info section
+    loadPartImages(fullPartNumber);    // Load all related images
+    loadOPLDocument(fullPartNumber);   // Load PDF/OPL
+}
+
+document.getElementById('partInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        if (currentMatch) {
+            selectPart(currentMatch);
+        } else {
+            alert("No match found for the entered part.");
+        }
+    }
+});
+// Function to extract the 11-character part number starting with K
+function extractPartNumber(qrString) {
+    const match = qrString.match(/\bK[A-Z0-9]{10}\b/);
+    return match ? match[0] : null;
+}
+
+function searchPart() {
+    const inputField = document.getElementById('partInput');
+    const qrString = inputField.value.trim();
+
+    // ✅ Extract only the 11-char part number
+    const partNumber = extractPartNumber(qrString);
+    if (!partNumber) {
+        alert("Not a valid part number!");
+        return;
+    }
+
+    // Clear input and hide suggestions
+    inputField.value = '';
+    document.getElementById('suggestions').style.display = 'none';
+    inputField.focus();
+
+    const infoSection = document.getElementById('infoSection');
+    const imageSection = document.getElementById('imageSection');
+
+    // Find the part in your data
+    let matchedPart;
+    if (partNumber.includes('%')) {
+        const regex = new RegExp('^' + partNumber.replace(/%/g, '.*') + '$', 'i');
+        matchedPart = partData.find(item => regex.test(item.Part));
+    } else {
+        matchedPart = partData.find(item => item.Part === partNumber);
+    }
+
+    if (!matchedPart) {
+        infoSection.innerHTML = `
+            <p style="color: red; font-weight: bold; text-align: center;">
+                Part Number "${partNumber}" Not Found.
+            </p>
+        `;
+        infoSection.style.display = 'block';
+        infoSection.classList.add('animate-fadeInUp');
+
+        // Hide and clear image section
+        imageSection.style.display = 'none';
+        imageSection.classList.remove('animate-zoomFade');
+        document.getElementById('mainImageSection').innerHTML = '';
+        document.getElementById('sideImagesSection').innerHTML = '';
+
+        return;
+    }
+
+    // PART FOUND
+    infoSection.style.display = 'block';
+    imageSection.style.display = 'flex';
+
+    document.getElementById('mainImageSection').innerHTML = `
+        <img src="images/${partNumber}.jpg" onclick="enlargeImage(this.src)"
+        onerror="this.onerror=null;this.src='default-main.jpg';" alt="Main Image">
+    `;
+    document.getElementById('sideImagesSection').innerHTML = `
+        <img src="images/${partNumber}-1.jpg" onclick="enlargeImage(this.src)"
+        onerror="this.onerror=null;this.src='default-side.jpg';" alt="Side Image 1">
+        <img src="images/${partNumber}-2.jpg" onclick="enlargeImage(this.src)"
+        onerror="this.onerror=null;this.src='default-side.jpg';" alt="Side Image 2">
+    `;
+
+    // Generate info table
+let tableHTML = '<table>';
+for (let key in matchedPart) {
+    if (key === "MODELS" && Array.isArray(matchedPart.MODELS)) {
+        // Join models with comma instead of divs
+        tableHTML += `<tr><th>${key}</th><td>${matchedPart.MODELS.join(", ")}</td></tr>`;
+    } else {
+        tableHTML += `<tr><th>${key}</th><td>${matchedPart[key]}</td></tr>`;
+    }
+}
+tableHTML += '</table>';
+
+
+    // Add buttons
+    const viewPdfButton = `
+        <div style="margin-top:10px;">
+            <button style="padding:10px; margin-right:10px;" onclick="showPdf('${partNumber}.pdf')">View Packaging</button>
+            <button style="padding:10px;" onclick="showPdf('${partNumber}-OPL.pdf')">View OPL</button>
+        </div>
+    `;
+
+    infoSection.innerHTML = `<h2>Part Number: ${partNumber}</h2>` + tableHTML + viewPdfButton;
+}
+
+
+// --- rest of your code remains unchanged ---
+
+
+
+// Image Modal Functions
+function enlargeImage(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("imageModal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+function showPdf(fileName) {
+    const pdfPath = 'pdfs/' + fileName;
+    const viewer = document.getElementById('pdfViewer');
+    viewer.src = pdfPath;
+    document.getElementById('pdfModal').style.display = 'block';
+
+    viewer.onerror = function () {
+        viewer.src = '';
+        alert('PDF not found: ' + pdfPath);
+    };
+}
+
+// Function to close modal on clicking the × button
+document.getElementById('closePdfModal').onclick = function () {
+    document.getElementById('pdfModal').style.display = 'none';
+    document.getElementById('pdfViewer').src = ''; // Clears PDF
+};
+
+// Optional: Close modal if user clicks outside the white box
+window.onclick = function(event) {
+    const modal = document.getElementById('pdfModal');
+    if (event.target === modal) {
+        modal.style.display = "none";
+        document.getElementById('pdfViewer').src = '';
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  const input = document.getElementById('partInput');
+
+  input.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      searchPart(); // trigger your existing search function
+    }
+  });
+
+  // Optional: auto-focus input so scanner types into it
+  input.focus();
+});
+function goBack() {
+      window.history.back();
+      // Or use: location.href = 'master.html'; to force return to main page
+    }
+
+    function goForward() {
+      window.history.forward();
+    }
+function showResetForm() {
+      document.getElementById('loginPage').style.display = "none";
+      document.getElementById('resetPage').style.display = "block";
+    }
+
+    function showLoginForm() {
+      document.getElementById('resetPage').style.display = "none";
+      document.getElementById('loginPage').style.display = "block";
+    }
+
+    function sendReset() {
+      const email = document.getElementById('resetEmail').value.trim();
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+      document.getElementById('resetMessage').style.display = "block";
+    }
+
+// Open Add Part Modal
+document.getElementById("addPartBtn").addEventListener("click", function() {
+  document.getElementById("addPartModal").style.display = "flex";
+});
+
+// Close modal
+function closeAddPart() {
+  document.getElementById("addPartModal").style.display = "none";
+}
+
+function saveNewPart() {
+  const partNumber = document.getElementById("newPartNumber").value.trim();
+  const desc = document.getElementById("newPartDesc").value.trim();
+  const vendor = document.getElementById("newPartVendor").value.trim();
+  const snp = parseInt(document.getElementById("newPartSnp").value) || 0;
+  const stp = document.getElementById("newPartStp").value.trim();
+
+  if (!partNumber || !desc) {
+    alert("Part Number and Description are required!");
+    return;
+  }
+
+  const newPart = { Part: partNumber, Description: desc, Vendor: vendor, SNP: snp, STP: stp };
+
+  // Add to in-memory JSON
+  partData.push(newPart);
+
+  // Save to disk using Electron preload API
+  if (window.api && typeof window.api.addPart === "function") {
+    window.api.addPart(newPart);
+  }
+
+  alert("Part added successfully!");
+
+  // Reset inputs
+  document.getElementById("newPartNumber").value = "";
+  document.getElementById("newPartDesc").value = "";
+  document.getElementById("newPartVendor").value = "";
+  document.getElementById("newPartSnp").value = "";
+  document.getElementById("newPartStp").value = "";
+
+  closeAddPart();
+}
+
+</script>
+
+</body>
+</html>
